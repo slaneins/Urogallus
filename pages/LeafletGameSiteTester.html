@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==" crossorigin=""/>
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@zxing/library@latest/umd/index.min.js"></script>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    #qr-video {
+      width: 300px;
+      height: 150px;
+    }
+    #map {
+    margin-top: 14px;
+  z-index: 1; /* oder eine niedrigere Zahl */
+  /* ...weitere Eigenschaften... */
+}
+    .logo {
+      width: 68px;
+      height: 65px;
+      display: block;
+      margin: 0 auto;
+      margin-top: -75px;
+    }
+    .mobile-container {
+      width: 100%;
+      margin: auto;
+      background-color: white;
+      height: 500px;
+      color: black;
+      border-radius: 10px;
+    }
+    
+    .topnav {
+      overflow: hidden;
+      background-color: white;
+      position: relative;
+    }
+    
+    .topnav #myLinks {
+      display: none;
+    }
+    
+    .topnav a {
+      padding: 7px;
+      text-decoration: none;
+      font-size: 36px;
+      color: black;
+      display: block;
+      transition: 0.3s;
+    }
+    
+    .topnav{
+    top: 0;
+    }
+    
+    .active {
+      color: white;
+    }
+    #ico{
+        color: rgb(40, 60, 52);
+        transition: transform 1s ease-in-out;
+    }
+    .container {
+      position: absolute;
+      right: 10px;
+      display: inline-block;
+      cursor: pointer;
+      top: 9px;
+      
+    }
+    
+    .bar1, .bar2, .bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: rgb(40, 60, 52);
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+    
+    .change .bar1 {
+      transform: translate(0, 11px) rotate(-45deg);
+    }
+    
+    .change .bar2 {opacity: 0;}
+    
+    .change .bar3 {
+      transform: translate(0, -11px) rotate(45deg);
+    }
+    .overlay {
+      z-index: 5;
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      background-color: #2B4A3F;
+      overflow-x: hidden;
+      transition: 0.5s;
+    }
+    .toolsOverlay{
+      z-index: 4;
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 212px;
+      left: 0;
+      background-color: rgb(235, 253, 231);
+      opacity: 0.9;
+      overflow-x: hidden;
+      transition: 0.5s;  
+    }
+    .overlay-content {
+      position: relative;
+      top: 25%;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+    }
+     ul{
+      padding: 8px;
+      top: 35%;
+      left: 8%;
+      right: 8%;
+    }
+    .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    .overlay a:hover, .overlay a:focus {
+        color: #66c266;
+    }
+    .overlay .closebtn {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      font-size: 60px;
+    }
+    @media screen and (max-height: 450px) {
+      .overlay {overflow-y: auto;}
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+      }
+    }
+    #center {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 93px;
+  right: 8px;
+  transform: translateY(-50%) translateX(-50%);
+}
+#score {
+  transform-style: preserve-3d;
+  font-size:20px;
+  line-height: 45px;
+}
+#scoreIcon{
+  position: absolute;
+right: 22%;
+margin-right: 30px;
+padding-right: 10px;
+line-height: 45px;
+}
+#tag {
+  transform-style: preserve-3d;
+  display: none;
+  position:absolute;
+  color: green;
+  top: -55px;
+  left:50%;
+  transform: translateX(-50%);
+  font-size:20px;
+  line-height: 50px;
+}
+    .bob{
+  display: inline;
+  width: 60%;
+  margin-top: 2vh;
+  margin-bottom: 5vh;
+  margin-left: 3%;
+  background: greenyellow;
+  
+  border: 3px outset rgb(191, 187, 181);
+  border-radius: 20px;
+}
+#ranger{
+  width: 80px;
+  height: 80px;
+  margin-left: 3vh;
+}
+
+#toolbar {
+      position: absolute;
+      margin-top: -32px;
+      right: 10px;
+      margin-bottom: 40px;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+    #icon21, #icon22, #icon23 {
+      display: inline-block;
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    #icon21, #icon22, #icon23{
+      animation: fadeIn 1.5s ease-in-out;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Simulate a smartphone / tablet -->
+<div class="mobile-container">
+
+<!-- Top Navigation Menu -->
+<div class="topnav">
+  <a onclick="toggleToolbar()">
+    <i id="ico"  class="fa fa-cog fa-lg" aria-hidden="true"></i>
+  </a>
+  <a href="#home"><img class="logo" src="../img\LogoFinal.png"></a>
+  <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+    <div class="container" onclick="animateBars(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </a>
+</div>
+
+<div id="myNav" class="overlay">
+  <div class="overlay-content">
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    <i class="fa fa-user-circle-o" style="font-size:36px"></i>
+  </div>
+</div>
+<div id="toolNav" class="toolsOverlay">
+  <div class="overlay-content">
+    <video id="qr-video" autoplay allow="camera"></video>
+  <button id="qr-button">
+    <img src="../img/qr.png" style="width: 80px; height:80px;" alt="Scan QR Code">
+  </button>
+  </div>
+  <div id="toolNav2" class="toolsOverlay">
+    <div class="overlay-content">
+      <ul>
+        <li>1.Hinweis: Ein Teil der ersten Schatzkarte ist dort zu finden wo das Wasser in Deutschland am tiefsten fällt</li>
+        <br>
+        <li>2.Hinweis: Du kannst 500 Punkte dazu verdienen in dem zu auf deinem weg Müll einsammelst und in einen der gekennzeichneten Mülleimer zu bringst </li>
+        <br>
+        <li>Milk</li>
+      </ul>
+    </div>
+</div>
+</div>
+<div id="center">
+  <div class="scoremenu"><i id="scoreIcon" class="fa fa-pagelines">:</i></div>
+    <div id="tag">
+    +200
+    </div>
+    <div id="score" class="scoremenu">
+    0
+    </div>
+  </div>
+<div class=".bob">
+    <img onClick="giveCash(200)" id="ranger" src="../img/sheriff.png">
+    <audio  class="bob" src="../audio/start.mp3" controls
+    >
+    </audio>
+  
+  </div>
+  <div id="toolbar" style="display: none;">
+    <div id="icon21"><i class="fa fa-qrcode fa-2x" onclick="toggleMenuTools()" aria-hidden="true"></i></div>
+    <div id="icon22"><i class="fa fa-tasks fa-2x" onclick="toggleMenuTools2()" aria-hidden="true"></i></div>
+    <div id="icon23"><i href="javascript:void(0);" onclick="" class="fa fa-question fa-2x" aria-hidden="true"></i></div>
+    <!-- weitere Icons -->
+  </div>
+<div id="map" style="height:500px;width:100%;">
+    
+</div>
+
+<script>
+  var menuOpen = false;
+  function toggleMenu(){
+    if(menuOpen == false){
+      document.getElementById("myNav").style.width = "100%";
+      //Close other Navs when open this nav
+      menuOpen = true; 
+    } else {
+      document.getElementById("myNav").style.width = "0%";
+      menuOpen = false;  
+    }
+  }
+  var menuOpen2 = false;
+  function toggleMenuTools(){
+    if(menuOpen2 == false){
+      document.getElementById("toolNav").style.width = "100%";
+       //Close other Navs when open this nav
+      document.getElementById("toolNav2").style.width = "0%";
+      document.getElementById("toolNav3").style.width = "0%";
+      menuOpen2 = true; 
+    } else {
+      document.getElementById("toolNav").style.width = "0%";
+      menuOpen2 = false;  
+    }
+  }
+  var menuOpen3 = false;
+  function toggleMenuTools2(){
+    if(menuOpen3 == false){
+      document.getElementById("toolNav2").style.width = "100%";
+      document.getElementById("toolNav").style.width = "0%";
+      document.getElementById("toolNav").style.width = "0%";
+      menuOpen3 = true; 
+    } else {
+      document.getElementById("toolNav2").style.width = "0%";
+      menuOpen3 = false;  
+    }
+  }
+  var menuOpen4 = false;
+  function toggleMenuTools3(){
+    if(menuOpen3 == false){
+      document.getElementById("toolNav3").style.width = "100%";
+      document.getElementById("toolNav").style.width = "0%";
+      document.getElementById("toolNav2").style.width = "0%";
+      menuOpen3 = true; 
+    } else {
+      document.getElementById("toolNav2").style.width = "0%";
+      menuOpen3 = false;  
+    }
+  }
+  function animateBars(x) {
+    x.classList.toggle("change");
+    if (menuOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+//Hier wird unsere gesamte Map in einer initMap() Methode geziehlt 1 Mal gestartet und 
+//läuft dann Clientseitig ohne viel vom Server nachladen zu müssen
+var seeLine = 0;
+    function toggleRoute(seeLine) {
+        x = seeLine;
+        if(x == 0){
+            SeeLine = 1; 
+    } else {
+            SeeLine = 0;
+    }
+  }
+  score = 0;
+function giveCash(x){
+  $({score: 0}).animate({score: x},{
+    duration: 1000,
+    easing:"linear",
+    step: function(now, fx){
+      $("#score").html(score + Math.floor(now));
+    },
+    queue:true,
+    complete: function(now, fx){
+      score += x;
+    }
+  });
+  $("#tag").fadeIn({
+    duration:700,
+    easing:"linear",
+    step:function(now, fx){
+      $(this).css("top", -55 * now  +"px");
+    }
+  }).fadeOut({
+    duration:300,
+    step:function(now, fx){
+      $(this).css("top",-55 * ( 2 - now) + "px");
+    }
+  });
+}
+    const codeReader = new ZXing.BrowserQRCodeReader()
+    const qrVideo = document.getElementById('qr-video')
+    const qrButton = document.getElementById('qr-button')
+    let scanning = false
+
+    qrButton.addEventListener('click', () => {
+      if (scanning) {
+        return
+      }
+      scanning = true
+      codeReader.reset()
+      qrVideo.srcObject = null
+      let timeoutId = setTimeout(() => {
+        alert('Unable to scan QR code, time expired')
+        scanning = false
+      }, 4 * 60 * 1000) // 4 minutes in milliseconds
+
+      if ('srcObject' in HTMLVideoElement.prototype) {
+        // The browser supports the srcObject property, so we can use it to set the video stream
+        try {
+          codeReader.decodeOnceFromVideoDevice(undefined, qrVideo).then(result => {
+            clearTimeout(timeoutId)
+            // Handle successful QR code scan
+            window.location.replace(result.text);
+            console.log(result.text)
+            scanning = false
+          }).catch(error => {
+            console.error(error)
+            scanning = false
+          })
+        } catch (e) {
+          console.error(e)
+          scanning = false
+        }
+      } else {
+        // The browser does not support the srcObject property, so we need to use the deprecated `getUserMedia` method
+        navigator.getUserMedia({ video: true }, stream => {
+          qrVideo.srcObject = stream
+          try {
+            codeReader.decodeOnceFromVideoDevice(undefined, qrVideo).then(result => {
+              clearTimeout(timeoutId)
+              // Handle successful QR code scan
+              console.log(result.text)
+              scanning = false
+            }).catch(error => {
+              console.error(error)
+              scanning = false
+            })
+          } catch (e) {
+            console.error(e)
+            scanning = false
+          }
+        }, error => {
+          console.error(error)
+          scanning = false
+        })
+      }
+    })
+  
+  function initMap(seeLine) {
+    var map = L.map('map').setView([48.079446, 8.155675], 11);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
+        maxZoom: 18
+    }).addTo(map);
+    var targetIcon = L.icon({
+        iconUrl: '../img/qr.png',
+        iconSize: [38, 38],
+    });
+    var userIcon = L.icon({
+        iconUrl: '../img/ranger.png',
+        iconSize: [38, 38],
+    });
+    var trashIcon = L.icon({
+        iconUrl: '../img/mulleimer.png',
+        iconSize: [38, 38],
+    });
+
+    // Zielmarker
+    var targetMarker = L.marker([48.079446, 8.155675], {icon: targetIcon}).addTo(map);
+
+    // Benutzermarker
+    var userMarker = L.marker([48.049974, 8.220003], {icon: userIcon}).addTo(map);
+    // Mülleimermarkar
+    var trashMarker = L.marker([48.051129, 8.208677], {icon: trashIcon}).addTo(map);
+    var trashMarker = L.marker([48.052020, 8.206092], {icon: trashIcon}).addTo(map);
+    var trashMarker = L.marker([48.054232, 8.205223], {icon: trashIcon}).addTo(map);
+    var trashMarker = L.marker([48.077508, 8.163030], {icon: trashIcon}).addTo(map);
+    // Benutzerposition aktualisieren und weiterreichende Speicherung
+    var id = navigator.geolocation.watchPosition(function(position) {
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            userMarker.setLatLng([lat, lng]);
+            latlngs[0] = [lat, lng];
+            polyline.setLatLngs(latlngs);
+    }, function(err) {
+        console.log(err);
+    }, {
+        enableHighAccuracy: true,
+    });
+    //Abfrage Route zum checkpoint berechnen oder auch nicht durch button Toggle
+    //Hauptrouten Koordinaten zum Ersten QR Checkpoint
+    // Erstellen der Koordinaten für die Linien mit mehreren Umwegen
+    var latlngs = [
+        [48.049974, 8.220003],
+        [48.049974, 8.210003],
+        [48.049967, 8.209537],
+        [48.050343, 8.209097],
+        [48.050045, 8.208012],
+        [48.049160, 8.204946],
+        [48.049447, 8.203149],
+        [48.049139, 8.201577],
+        [48.049161, 8.200445],
+        [48.049269, 8.199876],
+        [48.050432, 8.197100],
+        [48.050908, 8.196496],
+        [48.052743, 8.194794],
+        [48.053561, 8.194134],
+        [48.054177, 8.193798],
+        [48.054214, 8.193588],
+        [48.054615, 8.193151],
+        [48.054957, 8.192788],
+        [48.055609, 8.192281],
+        [48.055975, 8.192061],
+        [48.056320, 8.191708],
+        [48.057244, 8.190816],
+        [48.058216, 8.189647],
+        [48.058834, 8.188948],
+        [48.059171, 8.187923],
+        [48.059514, 8.186854],
+        [48.059699, 8.186194],
+        [48.059839, 8.185513],
+        [48.059934, 8.185213],
+        [48.059977, 8.184942],
+        [48.059981, 8.184693],
+        [48.059805, 8.183797],
+        [48.059708, 8.183405],
+        [48.059656, 8.182906],
+        [48.059592, 8.182408],
+        [48.059726, 8.182078],
+        [48.059489, 8.179618],
+        [48.059487, 8.179489],
+        [48.059526, 8.179366],
+        [48.059592, 8.179310],
+        [48.060269, 8.178887],
+        [48.060734, 8.178609],
+        [48.061386, 8.178045],
+        [48.061487, 8.177998],
+        [48.061843, 8.178309],
+        [48.061895, 8.178300],
+        [48.062334, 8.177503],
+        [48.062402, 8.177396],
+        [48.062823, 8.176236],
+        [48.062837, 8.175464],
+        [48.063933, 8.173015],
+        [48.064119, 8.172014],
+        [48.064176, 8.170855],
+        [48.065631, 8.169321],
+        [48.066162, 8.168624],
+        [48.066667, 8.168067],
+        [48.067255, 8.167788],
+        [48.068416, 8.167767],
+        [48.069606, 8.168679],
+        [48.070478, 8.168751],
+        [48.070908, 8.168713],
+        [48.071196, 8.168827],
+        [48.071533, 8.168697],
+        [48.071658, 8.168842],
+        [48.072149, 8.168912],
+        [48.073002, 8.168810],
+        [48.073221, 8.168665],
+        [48.073988, 8.167364],
+        [48.074443, 8.167040],
+        [48.075396, 8.166536],
+        [48.076009, 8.165821],
+        [48.075833, 8.165579],
+        [48.077360, 8.163406],
+        [48.076009, 8.165821],
+        [48.078722, 8.160515],
+        [48.078994, 8.159882],
+        [48.079284, 8.156583],
+                ];
+        // Hinzufügen der Linien zur Karte
+        var polyline = L.polyline(latlngs, {color: '#00ff00', weight:5}).addTo(map);
+        map.fitBounds(polyline.getBounds());
+        targetMarker.on('click', function (e) {
+            if (seeLine == 0) {
+            map.removeLayer(polyline);
+            seeLine = 1;
+            } else {
+            map.addLayer(polyline);
+            seeLine = 0;
+        }
+        });
+        polyline.on('mouseover', function (e) {
+            polyline.setStyle({ color: '#00ff00' , weight:7 });
+        });
+        polyline.on('mouseout', function (e) {
+        this.setStyle({ weight:5 });
+});
+}
+initMap(); //-->Hier wird die initMap Funktion schließlich außerhalb aufgerufen!
+    
+    let angle = 0;
+        const ico = document.getElementById("ico");
+        ico.onclick = function() {
+        angle += 360;
+        ico.style.transform = `rotate(${angle}deg)`;
+        };
+function toggleToolbar() {
+      var toolbar = document.getElementById("toolbar");
+      if (toolbar.style.display === "none") {
+        toolbar.style.display = "block";
+        toolbar.style.animation = "fadeIn 1.5s ease-in-out";
+      } else {
+        toolbar.style.animation = "fadeOut 1.5s ease-in-out";
+        setTimeout(function() {
+          toolbar.style.display = "none";
+        }, 500);
+      }
+    }
+</script>
+
+
+</script>
+
+</body>
+</html>
