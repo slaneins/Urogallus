@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+  <style>
+    
+    .logo {
+      width: 68px;
+      height: 65px;
+      display: block;
+      margin: 0 auto;
+      margin-top: -75px;
+    }
+    .mobile-container {
+      width: 100%;
+      margin: auto;
+      background-color: white;
+      height: 500px;
+      color: black;
+      border-radius: 10px;
+    }
+    
+    .topnav {
+      overflow: hidden;
+      background-color: white;
+      position: relative;
+    }
+    
+    .topnav #myLinks {
+      display: none;
+    }
+    
+    .topnav a {
+      padding: 7px;
+      text-decoration: none;
+      font-size: 36px;
+      color: black;
+      display: block;
+      transition: 0.3s;
+    }
+    
+    .topnav{
+    top: 0;
+    }
+    
+    .active {
+      color: white;
+    }
+    #ico{
+        color: rgb(40, 60, 52);
+        transition: transform 1s ease-in-out;
+    }
+    .container {
+      position: absolute;
+      right: 10px;
+      display: inline-block;
+      cursor: pointer;
+      top: 9px;
+      
+    }
+    
+    .bar1, .bar2, .bar3 {
+      width: 35px;
+      height: 5px;
+      background-color: rgb(40, 60, 52);
+      margin: 6px 0;
+      transition: 0.4s;
+    }
+    
+    .change .bar1 {
+      transform: translate(0, 11px) rotate(-45deg);
+    }
+    
+    .change .bar2 {opacity: 0;}
+    
+    .change .bar3 {
+      transform: translate(0, -11px) rotate(45deg);
+    }
+    .overlay {
+      z-index: 5;
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 80px;
+      left: 0;
+      background-color: #2B4A3F;
+      overflow-x: hidden;
+      transition: 0.5s;
+    }
+    .toolsOverlay{
+      z-index: 4;
+      height: 100%;
+      width: 0;
+      position: fixed;
+      top: 212px;
+      left: 0;
+      background-color: rgb(235, 253, 231);
+      opacity: 0.9;
+      overflow-x: hidden;
+      transition: 0.5s;  
+    }
+    .overlay-content {
+      position: relative;
+      top: 25%;
+      width: 100%;
+      text-align: center;
+      margin-top: 30px;
+    }
+     ul{
+      padding: 8px;
+      top: 35%;
+      left: 8%;
+      right: 8%;
+    }
+    .overlay a {
+      padding: 8px;
+      text-decoration: none;
+      font-size: 36px;
+      color: white;
+      display: block;
+      transition: 0.3s;
+    }
+    .overlay a:hover, .overlay a:focus {
+        color: #66c266;
+    }
+    .overlay .closebtn {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      font-size: 60px;
+    }
+    @media screen and (max-height: 450px) {
+      .overlay {overflow-y: auto;}
+      .overlay a {font-size: 20px}
+      .overlay .closebtn {
+        font-size: 40px;
+        top: 15px;
+        right: 35px;
+      }
+    }
+    #center {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 93px;
+  right: 8px;
+  transform: translateY(-50%) translateX(-50%);
+}
+#score {
+  transform-style: preserve-3d;
+  font-size:20px;
+  line-height: 45px;
+}
+#scoreIcon{
+  position: absolute;
+right: 22%;
+margin-right: 30px;
+padding-right: 10px;
+line-height: 45px;
+}
+#tag {
+  transform-style: preserve-3d;
+  display: none;
+  position:absolute;
+  color: green;
+  top: -55px;
+  left:50%;
+  transform: translateX(-50%);
+  font-size:20px;
+  line-height: 50px;
+}
+    .bob{
+  display: inline;
+  width: 60%;
+  margin-top: 2vh;
+  margin-bottom: 5vh;
+  margin-left: 3%;
+  background: greenyellow;
+  
+  border: 3px outset rgb(191, 187, 181);
+  border-radius: 20px;
+}
+#ranger{
+  width: 80px;
+  height: 80px;
+  margin-left: 3vh;
+}
+
+  </style>
+</head>
+<body>
+
+<!-- Simulate a smartphone / tablet -->
+<div class="mobile-container">
+
+<!-- Top Navigation Menu -->
+<div class="topnav">
+  <a onclick="toggleToolbar()">
+    <i id="ico"  class="fa fa-cog fa-lg" aria-hidden="true"></i>
+  </a>
+  <a href="#home"><img class="logo" src="../img\LogoFinal.png"></a>
+  <a href="javascript:void(0);" class="icon" onclick="toggleMenu()">
+    <div class="container" onclick="animateBars(this)">
+      <div class="bar1"></div>
+      <div class="bar2"></div>
+      <div class="bar3"></div>
+    </div>
+  </a>
+</div>
+
+<div id="myNav" class="overlay">
+  <div class="overlay-content">
+    <a href="#home">Home</a>
+    <a href="#news">News</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+    <i class="fa fa-user-circle-o" style="font-size:36px"></i>
+  </div>
+</div>
+
+<div id="center">
+  <div class="scoremenu"><i id="scoreIcon" class="fa fa-pagelines">:</i></div>
+    <div id="tag">
+    +200
+    </div>
+    <div id="score" class="scoremenu">
+    0
+    </div>
+  </div>
+<div class=".bob">
+    <img onClick="giveCash(200)" id="ranger" src="../img/sheriff.png">
+    <audio  class="bob" src="../audio/start.mp3" controls
+    >
+    </audio>
+  
+  </div>
+  <div id="toolbar" style="display: none;">
+    <div id="icon21"><i class="fa fa-qrcode fa-2x" onclick="toggleMenuTools()" aria-hidden="true"></i></div>
+    <div id="icon22"><i class="fa fa-tasks fa-2x" onclick="toggleMenuTools2()" aria-hidden="true"></i></div>
+    <div id="icon23"><i href="javascript:void(0);" onclick="" class="fa fa-question fa-2x" aria-hidden="true"></i></div>
+    <!-- weitere Icons -->
+  </div>
+</div>
+<!-- Hier weiter mit Quiz-->
+
+
+
+</body>
+<script>
+  var menuOpen = false;
+  function toggleMenu(){
+    if(menuOpen == false){
+      document.getElementById("myNav").style.width = "100%";
+      //Close other Navs when open this nav
+      menuOpen = true; 
+    } else {
+      document.getElementById("myNav").style.width = "0%";
+      menuOpen = false;  
+    }
+  }
+  var menuOpen2 = false;
+  function toggleMenuTools(){
+    if(menuOpen2 == false){
+      document.getElementById("toolNav").style.width = "100%";
+       //Close other Navs when open this nav
+      document.getElementById("toolNav2").style.width = "0%";
+      document.getElementById("toolNav3").style.width = "0%";
+      menuOpen2 = true; 
+    } else {
+      document.getElementById("toolNav").style.width = "0%";
+      menuOpen2 = false;  
+    }
+  }
+  var menuOpen3 = false;
+  function toggleMenuTools2(){
+    if(menuOpen3 == false){
+      document.getElementById("toolNav2").style.width = "100%";
+      document.getElementById("toolNav").style.width = "0%";
+      document.getElementById("toolNav").style.width = "0%";
+      menuOpen3 = true; 
+    } else {
+      document.getElementById("toolNav2").style.width = "0%";
+      menuOpen3 = false;  
+    }
+  }
+  var menuOpen4 = false;
+  function toggleMenuTools3(){
+    if(menuOpen3 == false){
+      document.getElementById("toolNav3").style.width = "100%";
+      document.getElementById("toolNav").style.width = "0%";
+      document.getElementById("toolNav2").style.width = "0%";
+      menuOpen3 = true; 
+    } else {
+      document.getElementById("toolNav2").style.width = "0%";
+      menuOpen3 = false;  
+    }
+  }
+  function animateBars(x) {
+    x.classList.toggle("change");
+    if (menuOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  }
+  score = 0;
+function giveCash(x){
+  $({score: 0}).animate({score: x},{
+    duration: 1000,
+    easing:"linear",
+    step: function(now, fx){
+      $("#score").html(score + Math.floor(now));
+    },
+    queue:true,
+    complete: function(now, fx){
+      score += x;
+    }
+  });
+  $("#tag").fadeIn({
+    duration:700,
+    easing:"linear",
+    step:function(now, fx){
+      $(this).css("top", -55 * now  +"px");
+    }
+  }).fadeOut({
+    duration:300,
+    step:function(now, fx){
+      $(this).css("top",-55 * ( 2 - now) + "px");
+    }
+  });
+}
+    
+    let angle = 0;
+        const ico = document.getElementById("ico");
+        ico.onclick = function() {
+        angle += 360;
+        ico.style.transform = `rotate(${angle}deg)`;
+        };
+function toggleToolbar() {
+      var toolbar = document.getElementById("toolbar");
+      if (toolbar.style.display === "none") {
+        toolbar.style.display = "block";
+        toolbar.style.animation = "fadeIn 1.5s ease-in-out";
+      } else {
+        toolbar.style.animation = "fadeOut 1.5s ease-in-out";
+        setTimeout(function() {
+          toolbar.style.display = "none";
+        }, 500);
+      }
+    }
+</script>
+
+
+</script>
+
+</body>
+</html>
