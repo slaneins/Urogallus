@@ -7,13 +7,45 @@
   <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js" integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==" crossorigin=""></script>
   <script type="text/javascript" src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@zxing/library@latest/umd/index.min.js"></script>
+  <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&amp;display=swap"
+      data-tag="font"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Barrio:wght@400&amp;display=swap"
+      data-tag="font"
+    />
+    <!--This is the head section-->
+    <!-- <style> ... </style> -->
+    <link rel="stylesheet" href="../style.css" />
+    <style data-tag="reset-style-sheet">
+      html {  line-height: 1.15;}body {  margin: 0;}* {  box-sizing: border-box;  border-width: 0;  border-style: solid;}p,li,ul,pre,div,h1,h2,h3,h4,h5,h6,figure,blockquote,figcaption {  margin: 0;  padding: 0;}button {  background-color: transparent;}button,input,optgroup,select,textarea {  font-family: inherit;  font-size: 100%;  line-height: 1.15;  margin: 0;}button,select {  text-transform: none;}button,[type="button"],[type="reset"],[type="submit"] {  -webkit-appearance: button;}button::-moz-focus-inner,[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner {  border-style: none;  padding: 0;}button:-moz-focus,[type="button"]:-moz-focus,[type="reset"]:-moz-focus,[type="submit"]:-moz-focus {  outline: 1px dotted ButtonText;}a {  color: inherit;  text-decoration: inherit;}input {  padding: 2px 4px;}img {  display: block;}html { scroll-behavior: smooth  }
+    </style>
   <style>
+    html {
+        font-family: Inter;
+        font-size: 16px;
+      }
     body {
-      font-family: Arial, Helvetica, sans-serif;
+        font-weight: 400;
+        font-style:normal;
+        text-decoration: none;
+        text-transform: none;
+        letter-spacing: normal;
+        line-height: 1.15;
+        color: var(--dl-color-gray-black);
+        background-color: var(--dl-color-gray-white);
     }
     #qr-video {
       width: 300px;
-      height: 150px;
+      height: 200px;
     }
     #map {
     margin-top: 14px;
@@ -92,6 +124,9 @@
     .change .bar3 {
       transform: translate(0, -11px) rotate(45deg);
     }
+    #User{
+      color: whitesmoke;
+    }
     .overlay {
       z-index: 5;
       height: 100%;
@@ -105,10 +140,10 @@
     }
     .toolsOverlay{
       z-index: 4;
-      height: 100%;
+      height: 90%;
       width: 0;
       position: fixed;
-      top: 212px;
+      top: 271px;
       left: 0;
       background-color: rgb(235, 253, 231);
       opacity: 0.9;
@@ -117,10 +152,11 @@
     }
     .overlay-content {
       position: relative;
-      top: 25%;
+      top: 10%;
       width: 100%;
       text-align: center;
       margin-top: 30px;
+      font-family: Barrio;
     }
      ul{
       padding: 8px;
@@ -163,13 +199,16 @@
 }
 #score {
   transform-style: preserve-3d;
-  font-size:20px;
-  line-height: 45px;
+  font-size: 20px;
+  line-height: 50px;
+  margin-top: -30px;
+  margin-bottom: 22px;
 }
 #scoreIcon{
-  position: absolute;
+position: absolute;
 right: 22%;
 margin-right: 30px;
+margin-top: -30px;
 padding-right: 10px;
 line-height: 45px;
 }
@@ -185,20 +224,23 @@ line-height: 45px;
   line-height: 50px;
 }
     .bob{
-  display: inline;
-  width: 60%;
-  margin-top: 2vh;
-  margin-bottom: 5vh;
-  margin-left: 3%;
-  background: greenyellow;
-  
-  border: 3px outset rgb(191, 187, 181);
-  border-radius: 20px;
+      display: inline;
+        width: 60%;
+        height: 20px;
+        margin-bottom: 40px;
+        margin-left: 90px;
+        background: greenyellow;
+        border: 1px outset rgb(191, 187, 181);
+        border-radius: 5px;
+        max-width: 300px;
+        box-shadow: 4px 5px 10px gray;
 }
 #ranger{
   width: 80px;
   height: 80px;
-  margin-left: 3vh;
+  margin-left: 15px;
+  margin-top: 25px;
+
 }
 
 #toolbar {
@@ -218,10 +260,54 @@ line-height: 45px;
     #icon21, #icon22, #icon23{
       animation: fadeIn 1.5s ease-in-out;
     }
+   
+    @media only screen and (max-width: 475px) {
+      .home-text53 {
+      margin-left: -42px;
+      margin-right: 0px;
+      margin-bottom: var(--dl-space-space-unit);
+  }
+}
+.speech-bubble {
+  height: 90px;
+position: absolute;
+top: 105px;
+left: 90px;
+width: 60%;
+max-width: 300px;
+padding: 10px;
+background-color: rgb(228, 255, 179);
+border-radius: 10px;
+box-shadow: 4px 5px 10px gray;
+}
+
+.speech-bubble::before {
+  content: "";
+  position: absolute;
+  top: 105px;
+  left: 90px;
+  width: 60px;
+  border-width: 20px 20px 0;
+  border-style: solid;
+  border-color: white transparent;
+  
+}
+.speech-bubble p {
+  margin: 2px;
+  padding: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+#speech-bubble-text{
+  width: 600px;
+  height: 90px;
+}
+
+    
   </style>
 </head>
 <body>
-
+<link href="../home.css" rel="stylesheet" />
 <!-- Simulate a smartphone / tablet -->
 <div class="mobile-container">
 
@@ -246,7 +332,7 @@ line-height: 45px;
     <a href="#news">News</a>
     <a href="#contact">Contact</a>
     <a href="#about">About</a>
-    <i class="fa fa-user-circle-o" style="font-size:36px"></i>
+    <i id="User" class="fa fa-user-circle-o" style="font-size:36px"></i>
   </div>
 </div>
 <div id="toolNav" class="toolsOverlay">
@@ -278,11 +364,13 @@ line-height: 45px;
     </div>
   </div>
 <div class=".bob">
+    <div class="speech-bubble">
+      <p id="typing-text"></p>
+    </div>
+    <audio id="audio-player" class="bob" src="../audio/Bob.m4a" controls
+  >
+  </audio>
     <img onClick="giveCash(200)" id="ranger" src="../img/sheriff.png">
-    <audio  class="bob" src="../audio/start.mp3" controls
-    >
-    </audio>
-  
   </div>
   <div id="toolbar" style="display: none;">
     <div id="icon21"><i class="fa fa-qrcode fa-2x" onclick="toggleMenuTools()" aria-hidden="true"></i></div>
@@ -293,7 +381,33 @@ line-height: 45px;
 <div id="map" style="height:500px;width:100%;">
     
 </div>
-
+<footer class="home-footer">
+  <img
+    alt="logo"
+    src="../img/LogoFinal.png"
+    class="home-image2"
+  />
+  <span class="home-text53">
+    © 2023 Developed by <br> 
+    Benjamin Slaneinski. All Rights Reserved.
+  </span>
+  <div class="home-icon-group">
+    <svg viewBox="0 0 950.8571428571428 1024" class="home-icon10">
+      <path
+        d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
+      ></path></svg
+    ><svg viewBox="0 0 877.7142857142857 1024" class="home-icon12">
+      <path
+        d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
+      ></path></svg
+    ><svg viewBox="0 0 602.2582857142856 1024" class="home-icon14">
+      <path
+        d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
+      ></path>
+    </svg>
+  </div>
+</footer>
+</body>
 <script>
   var menuOpen = false;
   function toggleMenu(){
@@ -312,7 +426,7 @@ line-height: 45px;
       document.getElementById("toolNav").style.width = "100%";
        //Close other Navs when open this nav
       document.getElementById("toolNav2").style.width = "0%";
-      document.getElementById("toolNav3").style.width = "0%";
+      document.getElementById("toolNav2").style.width = "0%";
       menuOpen2 = true; 
     } else {
       document.getElementById("toolNav").style.width = "0%";
@@ -446,9 +560,36 @@ function giveCash(x){
         })
       }
     })
+  var audioPlayer = document.getElementById("audio-player");
+  var typingText = document.getElementById("typing-text");
+  var tasks = ["-Löse ein Quiz", "-Entsorge Müll", "-Wandere zum QR Point"];
+  var currentTask = 0;
+  var currentChar = 0;
+  
+  audioPlayer.onplay = function() {
+    typeText();
+  }
+  
+  function typeText() {
+    if (currentTask < tasks.length) {
+      var task = tasks[currentTask];
+      if (currentChar < task.length) {
+        typingText.innerHTML += task.charAt(currentChar);
+        currentChar++;
+        setTimeout(typeText, 50);
+      } else {
+        currentTask++;
+        currentChar = 0;
+        typingText.innerHTML += "<br>";
+        setTimeout(typeText, 500);
+      }
+    }
+  }
+    
+
   
   function initMap(seeLine) {
-    var map = L.map('map').setView([48.079446, 8.155675], 11);
+    var map = L.map('map').setView([48.079446, 8.155675], 18);
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>',
         maxZoom: 18
@@ -465,18 +606,29 @@ function giveCash(x){
         iconUrl: '../img/mulleimer.png',
         iconSize: [38, 38],
     });
+    var quizIcon = L.icon({
+        iconUrl: '../img/ideen.png',
+        iconSize: [38, 38],
+    });
 
     // Zielmarker
     var targetMarker = L.marker([48.079446, 8.155675], {icon: targetIcon}).addTo(map);
 
-    // Benutzermarker
+    // Benutzer Marker
     var userMarker = L.marker([48.049974, 8.220003], {icon: userIcon}).addTo(map);
-    // Mülleimermarkar
+    // Mülleimer Markar
     var trashMarker = L.marker([48.051129, 8.208677], {icon: trashIcon}).addTo(map);
     var trashMarker = L.marker([48.052020, 8.206092], {icon: trashIcon}).addTo(map);
     var trashMarker = L.marker([48.054232, 8.205223], {icon: trashIcon}).addTo(map);
     var trashMarker = L.marker([48.077508, 8.163030], {icon: trashIcon}).addTo(map);
-    // Benutzerposition aktualisieren und weiterreichende Speicherung
+    var trashMarker = L.marker([48.064176, 8.170855], {icon: trashIcon}).addTo(map);
+    var trashMarker = L.marker([48.057244, 8.190816], {icon: trashIcon}).addTo(map);
+    // Quiz Marker
+    var quizMarker = L.marker([48.054160, 8.199534], {icon: quizIcon}).addTo(map);
+    var quizMarker = L.marker([48.049375, 8.206402], {icon: quizIcon}).addTo(map);
+    var quizMarker = L.marker([48.054194, 8.205367], {icon: quizIcon}).addTo(map);
+    var quizMarker = L.marker([48.059839, 8.185513], {icon: quizIcon}).addTo(map);
+    // Benutzerposition aktualisieren und weiterreichende Speicherung in Real Time
     var id = navigator.geolocation.watchPosition(function(position) {
             var lat = position.coords.latitude;
             var lng = position.coords.longitude;
