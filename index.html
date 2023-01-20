@@ -13,7 +13,7 @@
     </style>
     <style data-tag="default-style-sheet">
       html {
-        font-family: Inter;
+        font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
         font-size: 16px;
       }
 
@@ -50,7 +50,8 @@
   </head>
   <body>
     <div>
-      <link href="./home.css" rel="stylesheet" />
+   
+      <link href="./startseite.css" rel="stylesheet" />
       <div class="mobile-container">
 
         <!-- Top Navigation Menu -->
@@ -82,229 +83,224 @@
             <a href="#about">About</a>
           </div>
         </div>
-      <div class="home-container">
-        <div class="home-hero">
-          <h1 class="home-text">
-            <span class="home-text01">UROGALLLO</span>
-            <br class="home-text02" />
-          </h1>
-          <span class="home-text03">
-            <span class="home-text04">Suche den Schatz</span>
-            <br />
-          </span>
-          <div class="home-btn-group">
-            <button class="home-button button">Get Started</button>
+        <div class="startseite-container">
+          <div class="startseite-hero">
+            <span class="startseite-titel-urogallo">UROGALLO</span>
+            <span class="startseite-suche-den-schatz">
+              <span class="startseite-text">Suche den Schatz</span>
+              <br />
+            </span>
+            <button class="startseite-button-titel button">Los gehts</button>
+            <div class="startseite-btn-group"></div>
           </div>
-        </div>
-        <div class="home-container01">
-          <div class="home-container02">
-            <div class="home-blog">
-              <div class="home-container03">
-                <div class="home-container04">
-                  <div class="home-blog-post-card">
-                    <div class="home-steps">
-                      <h1 class="home-text06">
-                        <span>HOW TO INTERACT</span>
-                        <br />
-                      </h1>
-                      <span class="home-text09">
-                        <span>
-                          Wie du auf den Spuren des Urogallo wanderst.
-                        </span>
-                        <br />
-                      </span>
-                      <div class="home-container05">
-                        <div class="home-step">
-                          <div class="home-container06">
-                            <div class="home-line"></div>
-                            <div class="home-container07">
-                              <svg
-                                viewBox="0 0 804.5714285714286 1024"
-                                class="home-icon"
-                              >
-                                <path
-                                  d="M219.429 658.286v73.143h-73.143v-73.143h73.143zM219.429 219.429v73.143h-73.143v-73.143h73.143zM658.286 219.429v73.143h-73.143v-73.143h73.143zM73.143 804h219.429v-218.857h-219.429v218.857zM73.143 365.714h219.429v-219.429h-219.429v219.429zM512 365.714h219.429v-219.429h-219.429v219.429zM365.714 512v365.714h-365.714v-365.714h365.714zM658.286 804.571v73.143h-73.143v-73.143h73.143zM804.571 804.571v73.143h-73.143v-73.143h73.143zM804.571 512v219.429h-219.429v-73.143h-73.143v219.429h-73.143v-365.714h219.429v73.143h73.143v-73.143h73.143zM365.714 73.143v365.714h-365.714v-365.714h365.714zM804.571 73.143v365.714h-365.714v-365.714h365.714z"
-                                ></path>
-                              </svg>
-                            </div>
-                            <div class="home-line1"></div>
-                          </div>
-                          <div class="home-container08">
-                            <h1 class="home-text12">
-                              <span>Scanne den QR-Code</span>
-                              <br />
-                            </h1>
-                            <span class="home-text15">
-                              <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing.
-                              </span>
-                              <br />
-                              <span></span>
-                            </span>
-                          </div>
-                        </div>
-                        <div class="home-step1">
-                          <div class="home-container09">
-                            <div class="home-line2"></div>
-                            <div class="home-container10">
-                              <svg viewBox="0 0 1024 1024" class="home-icon02">
-                                <path
-                                  d="M384 690l452-452 60 60-512 512-238-238 60-60z"
-                                ></path>
-                              </svg>
-                            </div>
-                            <div class="home-line3"></div>
-                          </div>
-                          <div class="home-container11">
-                            <h1 class="home-text18">
-                              <span>Folge den Steps</span>
-                              <br />
-                            </h1>
-                            <span class="home-text21">
-                              <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing.
-                              </span>
-                              <br />
-                              <span></span>
-                            </span>
-                          </div>
-                        </div>
-                        <div class="home-step2">
-                          <div class="home-container12">
-                            <div class="home-line4"></div>
-                            <div class="home-container13">
-                              <svg viewBox="0 0 1024 1024" class="home-icon04">
-                                <path
-                                  d="M544.010 1024.004c-2.296 0-4.622-0.25-6.94-0.764-14.648-3.25-25.070-16.238-25.070-31.24v-480h-480c-15.002 0-27.992-10.422-31.24-25.070-3.25-14.646 4.114-29.584 17.708-35.928l960-448c12.196-5.688 26.644-3.144 36.16 6.372 9.516 9.514 12.060 23.966 6.372 36.16l-448 960c-5.342 11.44-16.772 18.47-28.99 18.47zM176.242 448h367.758c17.674 0 32 14.328 32 32v367.758l349.79-749.546-749.548 349.788z"
-                                ></path>
-                              </svg>
-                            </div>
-                            <div class="home-line5"></div>
-                          </div>
-                          <div class="home-container14">
-                            <h1 class="home-text24">
-                              <span>Wandere auf dem Pfad</span>
-                              <br />
-                            </h1>
-                            <span class="home-text27">
-                              <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing.
-                              </span>
-                              <br />
-                              <span></span>
-                            </span>
-                          </div>
-                        </div>
-                        <div class="home-step3">
-                          <div class="home-container15">
-                            <div class="home-line6"></div>
-                            <div class="home-container16">
-                              <svg viewBox="0 0 1024 1024" class="home-icon06">
-                                <path
-                                  d="M892.075 405.333l-117.504-111.232c-24.235-23.083-61.739-38.101-95.445-38.101h-124.459v-21.333c0-35.328-28.672-64-64-64s-64 28.672-64 64v21.333h-149.333c-82.347 0-149.333 66.987-149.333 149.333 0 59.563 35.328 110.763 86.016 134.699l-78.677 78.635 109.269 109.269c24.32 24.32 62.293 40.064 96.768 40.064h93.867l34.133 170.667h42.667l34.133-170.667h115.2c82.389 0 149.333-66.987 149.333-149.333 0-38.485-15.061-73.301-39.040-99.797 0.896-0.896 2.176-1.493 3.072-2.389l117.333-111.147zM661.333 682.667h-320c-11.733 0-28.075-6.741-36.437-15.104l-48.896-48.896 48.896-48.896c8.32-8.32 24.619-15.104 36.437-15.104h320c35.328 0 64 28.672 64 64s-28.672 64-64 64zM715.904 454.656c-8.491 8.107-25.003 14.677-36.779 14.677h-401.792c-35.328 0-64-28.672-64-64s28.672-64 64-64h401.792c11.776 0 28.288 6.571 36.779 14.677l52.096 49.323-52.096 49.323z"
-                                ></path>
-                              </svg>
-                            </div>
-                            <div class="home-line7"></div>
-                          </div>
-                          <div class="home-container17">
-                            <h1 class="home-text30">
-                              <span>Entdecke den Urogallo</span>
-                              <br />
-                            </h1>
-                            <span class="home-text33">
-                              <span>
-                                Lorem ipsum dolor sit amet, consectetur
-                                adipiscing.
-                              </span>
-                              <br />
-                              <span></span>
-                            </span>
-                          </div>
-                        </div>
-                      </div>
+          <div class="startseite-how-to-interact">
+            <div class="startseite-steps">
+              <h1 class="startseite-how-to-interact-titel">
+                <span>HOW TO INTERACT</span>
+                <br />
+              </h1>
+              <span class="startseite-how-to-interact-beschreibung">
+                <span>Wie du auf den Spuren des Urogallo wanderst.</span>
+                <br />
+              </span>
+              <div class="startseite-container-steps">
+                <div class="startseite-step-q-r-code">
+                  <div class="startseite-container-icon-linie">
+                    <div class="startseite-line"></div>
+                    <div class="startseite-container1">
+                      <svg
+                        viewBox="0 0 804.5714285714286 1024"
+                        class="startseite-icon-q-r-code"
+                      >
+                        <path
+                          d="M219.429 658.286v73.143h-73.143v-73.143h73.143zM219.429 219.429v73.143h-73.143v-73.143h73.143zM658.286 219.429v73.143h-73.143v-73.143h73.143zM73.143 804h219.429v-218.857h-219.429v218.857zM73.143 365.714h219.429v-219.429h-219.429v219.429zM512 365.714h219.429v-219.429h-219.429v219.429zM365.714 512v365.714h-365.714v-365.714h365.714zM658.286 804.571v73.143h-73.143v-73.143h73.143zM804.571 804.571v73.143h-73.143v-73.143h73.143zM804.571 512v219.429h-219.429v-73.143h-73.143v219.429h-73.143v-365.714h219.429v73.143h73.143v-73.143h73.143zM365.714 73.143v365.714h-365.714v-365.714h365.714zM804.571 73.143v365.714h-365.714v-365.714h365.714z"
+                        ></path>
+                      </svg>
                     </div>
+                    <div class="startseite-line1"></div>
+                  </div>
+                  <div class="startseite-container-q-r-code-text">
+                    <h1 class="startseite-heading-q-r-code">
+                      <span>Scanne den QR-Code</span>
+                      <br />
+                    </h1>
+                    <span class="startseite-text-q-r-code">
+                      <span>
+                        Um zu direkt zu starten scanne den QR-Code. Du kannst auch
+                        direkt über das Menü zu den Stationen und der Karte zu
+                        gelangen.
+                      </span>
+                      <br />
+                    </span>
+                  </div>
+                </div>
+                <div class="startseite-container-steps1">
+                  <div class="startseite-container-icon-linie-steps">
+                    <div class="startseite-line2"></div>
+                    <div class="startseite-container2">
+                      <svg viewBox="0 0 1024 1024" class="startseite-icon-steps">
+                        <path
+                          d="M384 690l452-452 60 60-512 512-238-238 60-60z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="startseite-line3"></div>
+                  </div>
+                  <div class="startseite-container-steps-text">
+                    <h1 class="startseite-heading-steps">
+                      <span>Folge den Steps</span>
+                      <br />
+                    </h1>
+                    <span class="startseite-text-steps">
+                      <span>
+                        Jede Station hat eine andere Aufgabe. Folge den
+                        angezeigten Steps oder frage Ranger Bob falls du mal nicht
+                        weiter weisst.
+                      </span>
+                      <br />
+                    </span>
+                  </div>
+                </div>
+                <div class="startseite-container-pfad">
+                  <div class="startseite-container-icon-linie-pfad">
+                    <div class="startseite-line4"></div>
+                    <div class="startseite-container3">
+                      <svg viewBox="0 0 1024 1024" class="startseite-icon-pfad">
+                        <path
+                          d="M544.010 1024.004c-2.296 0-4.622-0.25-6.94-0.764-14.648-3.25-25.070-16.238-25.070-31.24v-480h-480c-15.002 0-27.992-10.422-31.24-25.070-3.25-14.646 4.114-29.584 17.708-35.928l960-448c12.196-5.688 26.644-3.144 36.16 6.372 9.516 9.514 12.060 23.966 6.372 36.16l-448 960c-5.342 11.44-16.772 18.47-28.99 18.47zM176.242 448h367.758c17.674 0 32 14.328 32 32v367.758l349.79-749.546-749.548 349.788z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="startseite-line5"></div>
+                  </div>
+                  <div class="startseite-container-text-pfad">
+                    <h1 class="startseite-heading-pfad">
+                      <span>Wandere auf dem Pfad</span>
+                      <br />
+                    </h1>
+                    <span class="startseite-text-pfad">
+                      <span>
+                        Die Karte hilft dir den richtigen Weg zu finden. Wandle
+                        auf dem Pfad und lass dich von den Stationen überraschen
+                        und inspirieren.
+                      </span>
+                      <br />
+                    </span>
+                  </div>
+                </div>
+                <div class="startseite-container-urogallo">
+                  <div class="startseite-container-icon-linie-urogallo">
+                    <div class="startseite-line6"></div>
+                    <div class="startseite-container4">
+                      <svg
+                        viewBox="0 0 1024 1024"
+                        class="startseite-icon-urogallo"
+                      >
+                        <path
+                          d="M892.075 405.333l-117.504-111.232c-24.235-23.083-61.739-38.101-95.445-38.101h-124.459v-21.333c0-35.328-28.672-64-64-64s-64 28.672-64 64v21.333h-149.333c-82.347 0-149.333 66.987-149.333 149.333 0 59.563 35.328 110.763 86.016 134.699l-78.677 78.635 109.269 109.269c24.32 24.32 62.293 40.064 96.768 40.064h93.867l34.133 170.667h42.667l34.133-170.667h115.2c82.389 0 149.333-66.987 149.333-149.333 0-38.485-15.061-73.301-39.040-99.797 0.896-0.896 2.176-1.493 3.072-2.389l117.333-111.147zM661.333 682.667h-320c-11.733 0-28.075-6.741-36.437-15.104l-48.896-48.896 48.896-48.896c8.32-8.32 24.619-15.104 36.437-15.104h320c35.328 0 64 28.672 64 64s-28.672 64-64 64zM715.904 454.656c-8.491 8.107-25.003 14.677-36.779 14.677h-401.792c-35.328 0-64-28.672-64-64s28.672-64 64-64h401.792c11.776 0 28.288 6.571 36.779 14.677l52.096 49.323-52.096 49.323z"
+                        ></path>
+                      </svg>
+                    </div>
+                    <div class="startseite-line7"></div>
+                  </div>
+                  <div class="startseite-container-urogallo-text">
+                    <h1 class="startseite-heading-urogallo-steps">
+                      <span>Entdecke den Urogallo</span>
+                      <br />
+                    </h1>
+                    <span class="startseite-text-urogallo-steps">
+                      <span>
+                        Entdecke den Auerhahn und seine Besonderheiten auf eine
+                        spannenden und interaktive Art.
+                      </span>
+                      <br />
+                    </span>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-        <div class="home-testimonial-card">
-          <svg viewBox="0 0 950.8571428571428 1024" class="home-icon08">
-            <path
-              d="M438.857 182.857v402.286c0 161.143-131.429 292.571-292.571 292.571h-36.571c-20 0-36.571-16.571-36.571-36.571v-73.143c0-20 16.571-36.571 36.571-36.571h36.571c80.571 0 146.286-65.714 146.286-146.286v-18.286c0-30.286-24.571-54.857-54.857-54.857h-128c-60.571 0-109.714-49.143-109.714-109.714v-219.429c0-60.571 49.143-109.714 109.714-109.714h219.429c60.571 0 109.714 49.143 109.714 109.714zM950.857 182.857v402.286c0 161.143-131.429 292.571-292.571 292.571h-36.571c-20 0-36.571-16.571-36.571-36.571v-73.143c0-20 16.571-36.571 36.571-36.571h36.571c80.571 0 146.286-65.714 146.286-146.286v-18.286c0-30.286-24.571-54.857-54.857-54.857h-128c-60.571 0-109.714-49.143-109.714-109.714v-219.429c0-60.571 49.143-109.714 109.714-109.714h219.429c60.571 0 109.714 49.143 109.714 109.714z"
-            ></path>
-          </svg>
-          <div class="home-testimonial">
-            <span class="home-text36">
-              Löse spannende Aufgaben, um deinen Nature Score zu verbessern und den Schatz des Waldes zu finden. Auf dem Weg dorthin wirst du sehen, dass man vieles tun kann, um die Natur zu schätzen und zu bewahren. Erlebe jetzt dein persönliches Schwarzwald-Abenteuer.
-            </span>
-            <span class="home-text37">
-              <span>Ranger Bob</span>
-              <br />
-            </span>
-            <span class="home-text40">
-              <span>DER POCKET RANGER</span>
-              <br />
-            </span>
+          <div class="startseite-ranger-bob">
+            <svg
+              viewBox="0 0 950.8571428571428 1024"
+              class="startseite-icon-anfuehrungszeichen"
+            >
+              <path
+                d="M438.857 182.857v402.286c0 161.143-131.429 292.571-292.571 292.571h-36.571c-20 0-36.571-16.571-36.571-36.571v-73.143c0-20 16.571-36.571 36.571-36.571h36.571c80.571 0 146.286-65.714 146.286-146.286v-18.286c0-30.286-24.571-54.857-54.857-54.857h-128c-60.571 0-109.714-49.143-109.714-109.714v-219.429c0-60.571 49.143-109.714 109.714-109.714h219.429c60.571 0 109.714 49.143 109.714 109.714zM950.857 182.857v402.286c0 161.143-131.429 292.571-292.571 292.571h-36.571c-20 0-36.571-16.571-36.571-36.571v-73.143c0-20 16.571-36.571 36.571-36.571h36.571c80.571 0 146.286-65.714 146.286-146.286v-18.286c0-30.286-24.571-54.857-54.857-54.857h-128c-60.571 0-109.714-49.143-109.714-109.714v-219.429c0-60.571 49.143-109.714 109.714-109.714h219.429c60.571 0 109.714 49.143 109.714 109.714z"
+              ></path>
+            </svg>
+            <div class="startseite-ranger-bob-zitat">
+              <span class="startseite-ranger-bob-zitat-text">
+                Löse spannende Aufgaben, um deinen Nature Score zu verbessern und
+                den Schatz des Waldes zu finden. Auf dem Weg dorthin wirst du
+                sehen, dass man vieles tun kann, um die Natur zu schätzen und zu
+                bewahren. Erlebe jetzt dein persönliches Schwarzwald-Abenteuer.
+              </span>
+              <span class="startseite-ranger-bob-zitat-name">
+                <span>Ranger BOB</span>
+                <br />
+              </span>
+              <span class="startseite-ranger-bob-zitat-jobtitel">
+                <span>DER POCKET RANGER</span>
+                <br />
+              </span>
+              <img
+                alt="profile"
+                src="public/playground_assets/ranger-200h.png"
+                class="startseite-ranger-bob-logo"
+              />
+            </div>
+          </div>
+          <div class="startseite-bereit-zum-starten">
+            <div class="startseite-container-bereit-zum-starten">
+              <h1 class="startseite-container-bereits-zum-starten-text">
+                <span>Bereit zu starten?</span>
+                <br />
+              </h1>
+              <span class="startseite-container-bereit-zum-starten-beschreibung">
+                <span>Scanne den QR-Code oder klicke auf den Button:</span>
+                <br />
+              </span>
+              <button class="startseite-button-los-gehts button">
+                <span>
+                  <span>Los gehts</span>
+                  <br />
+                </span>
+              </button>
+            </div>
             <img
-              alt="profile"
-              src="public/playground_assets/ranger_icon-200h.png"
-              class="home-image"
+              alt="image"
+              src="public/playground_assets/auerhahn-1500w.jpg"
+              class="startseite-auerhahn-schnee"
             />
           </div>
-        </div>
-        <div class="home-hero1">
-          <div class="home-container18">
-            <h1 class="home-text43">Keep it simple</h1>
-            <span class="home-text44">
-              <span>
-                <span>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
-                  non volutpat turpis.
-                </span>
-                <span></span>
-              </span>
-              <br />
-              <span></span>
-              <span>
-                <span>
-                  Mauris luctus rutrum mi ut rhoncus. Integer in dignissim
-                  tortor.
-                </span>
-                <span></span>
-              </span>
-            </span>
-            <button class="home-button1 button">Get Started</button>
-          </div>
-          <img
-            alt="image"
-            src="public/playground_assets/auerhahn-1500w.jpg"
-            class="home-image1"
-          />
-          <footer class="home-footer">
+          <footer class="startseite-footer">
             <img
               alt="logo"
-              src="public/playground_assets/urogallo_logo-200h.png"
-              class="home-image2"
+              src="public/playground_assets/urogallo-200h.png"
+              class="startseite-logo"
             />
-            <span class="home-text53">
-              © 2023 Benjamin Slaneinski, Laura Greim&nbsp; All Rights Reserved.
+            <span class="startseite-copyright">
+              <span>© 2023 Benjamin Slaneinski, Laura Greim&nbsp;</span>
+              <br />
+              <span>All Rights Reserved.</span>
             </span>
-            <div class="home-icon-group">
-              <svg viewBox="0 0 950.8571428571428 1024" class="home-icon10">
+            <div class="startseite-social-icons">
+              <svg viewbox="0 0 950.8571428571428 1024" class="startseite-icon05">
                 <path
                   d="M925.714 233.143c-25.143 36.571-56.571 69.143-92.571 95.429 0.571 8 0.571 16 0.571 24 0 244-185.714 525.143-525.143 525.143-104.571 0-201.714-30.286-283.429-82.857 14.857 1.714 29.143 2.286 44.571 2.286 86.286 0 165.714-29.143 229.143-78.857-81.143-1.714-149.143-54.857-172.571-128 11.429 1.714 22.857 2.857 34.857 2.857 16.571 0 33.143-2.286 48.571-6.286-84.571-17.143-148-91.429-148-181.143v-2.286c24.571 13.714 53.143 22.286 83.429 23.429-49.714-33.143-82.286-89.714-82.286-153.714 0-34.286 9.143-65.714 25.143-93.143 90.857 112 227.429 185.143 380.571 193.143-2.857-13.714-4.571-28-4.571-42.286 0-101.714 82.286-184.571 184.571-184.571 53.143 0 101.143 22.286 134.857 58.286 41.714-8 81.714-23.429 117.143-44.571-13.714 42.857-42.857 78.857-81.143 101.714 37.143-4 73.143-14.286 106.286-28.571z"
-                ></path></svg
-              ><svg viewBox="0 0 877.7142857142857 1024" class="home-icon12">
+                ></path></svg>
+                <svg
+                viewbox="0 0 877.7142857142857 1024"
+                class="startseite-icon07"
+              >
                 <path
                   d="M585.143 512c0-80.571-65.714-146.286-146.286-146.286s-146.286 65.714-146.286 146.286 65.714 146.286 146.286 146.286 146.286-65.714 146.286-146.286zM664 512c0 124.571-100.571 225.143-225.143 225.143s-225.143-100.571-225.143-225.143 100.571-225.143 225.143-225.143 225.143 100.571 225.143 225.143zM725.714 277.714c0 29.143-23.429 52.571-52.571 52.571s-52.571-23.429-52.571-52.571 23.429-52.571 52.571-52.571 52.571 23.429 52.571 52.571zM438.857 152c-64 0-201.143-5.143-258.857 17.714-20 8-34.857 17.714-50.286 33.143s-25.143 30.286-33.143 50.286c-22.857 57.714-17.714 194.857-17.714 258.857s-5.143 201.143 17.714 258.857c8 20 17.714 34.857 33.143 50.286s30.286 25.143 50.286 33.143c57.714 22.857 194.857 17.714 258.857 17.714s201.143 5.143 258.857-17.714c20-8 34.857-17.714 50.286-33.143s25.143-30.286 33.143-50.286c22.857-57.714 17.714-194.857 17.714-258.857s5.143-201.143-17.714-258.857c-8-20-17.714-34.857-33.143-50.286s-30.286-25.143-50.286-33.143c-57.714-22.857-194.857-17.714-258.857-17.714zM877.714 512c0 60.571 0.571 120.571-2.857 181.143-3.429 70.286-19.429 132.571-70.857 184s-113.714 67.429-184 70.857c-60.571 3.429-120.571 2.857-181.143 2.857s-120.571 0.571-181.143-2.857c-70.286-3.429-132.571-19.429-184-70.857s-67.429-113.714-70.857-184c-3.429-60.571-2.857-120.571-2.857-181.143s-0.571-120.571 2.857-181.143c3.429-70.286 19.429-132.571 70.857-184s113.714-67.429 184-70.857c60.571-3.429 120.571-2.857 181.143-2.857s120.571-0.571 181.143 2.857c70.286 3.429 132.571 19.429 184 70.857s67.429 113.714 70.857 184c3.429 60.571 2.857 120.571 2.857 181.143z"
-                ></path></svg
-              ><svg viewBox="0 0 602.2582857142856 1024" class="home-icon14">
+                ></path></svg>
+                <svg
+                viewbox="0 0 602.2582857142856 1024"
+                class="startseite-icon09"
+              >
                 <path
                   d="M548 6.857v150.857h-89.714c-70.286 0-83.429 33.714-83.429 82.286v108h167.429l-22.286 169.143h-145.143v433.714h-174.857v-433.714h-145.714v-169.143h145.714v-124.571c0-144.571 88.571-223.429 217.714-223.429 61.714 0 114.857 4.571 130.286 6.857z"
                 ></path>
@@ -313,7 +309,14 @@
           </footer>
         </div>
       </div>
-    </div>
+      <script
+        data-section-id="navbar"
+        src="https://unpkg.com/@teleporthq/teleport-custom-scripts"
+      ></script>
+      <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+    </body>
+  </html>
+  
     
     <script
       data-section-id="navbar"
