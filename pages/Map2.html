@@ -53,8 +53,8 @@
     /* ...weitere Eigenschaften... */
   }
       .logo {
-        width: 100px;
-        height: 100px;
+        width: 88px;
+        height: 85px;
         display: block;
         margin: 0 auto;
         margin-top: -75px;
@@ -227,7 +227,6 @@
         display: inline;
         width: 60%;
         height: 20px;
-        margin-bottom: 40px;
         margin-left: 90px;
         background: greenyellow;
         border: 1px outset rgb(191, 187, 181);
@@ -235,11 +234,14 @@
         max-width: 300px;
         box-shadow: 4px 5px 10px gray;
   }
+  .bob-container{
+  margin-top: 45px;
+}
   #ranger{
     width: 80px;
     height: 80px;
     margin-left: 15px;
-    margin-top: 25px;
+    margin-top: 55px;
   
   }
   
@@ -271,7 +273,6 @@
   .speech-bubble {
     height: 90px;
   position: absolute;
-  top: 105px;
   left: 90px;
   width: 60%;
   max-width: 300px;
@@ -364,13 +365,13 @@
         0
       </div>
     </div>
-  <div class=".bob">
+  
+  <div class="bob-container">
+    <audio id="audio-player" class="bob" src="../audio/Bob2.m4a" controls></audio>
       <div class="speech-bubble">
         <p id="typing-text"></p>
       </div>
-      <audio id="audio-player" class="bob" src="../audio/Bob2.m4a" controls
-    >
-    </audio>
+      
       <img onClick="giveCash(200)" id="ranger" src="../img/sheriff.png">
     </div>
     <div id="toolbar" style="display: none;">
